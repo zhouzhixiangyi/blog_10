@@ -13,9 +13,28 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url ,include
 from django.contrib import admin
+
+from django.http import HttpResponse , JsonResponse
+from django.template.loader import get_template
+
+
+# 模版
+from django.shortcuts import render
+
+
+def index(request):
+    print(request)
+    print(type(request))
+    dic = dict(zip('abcde',range(1,6)))
+
+    return render(request,'index.html',{"dic":dic})
+    # return JsonResponse({'user':'hello ecut'})
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^index/',index),
+    url(r'^user/' , include('user.urls')),
 ]

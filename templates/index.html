@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+    欢迎您访问<h1>{{content}} {{user}}</h1>
+
+    <ul>
+        {% for k,v in dic.items  %}
+
+            {% if forloop.counter0|divisibleby:"2" %}
+                <li style="color: #ff0000">{{fooloop.counter0}} {{k}} {{v}}</li>
+            {% else %}
+                <li style="color: #00ffff">{{fooloop.counter0}} {{k}} {{v}}</li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+
+<hr>
+    <ul>
+        {% for k,v in dic.items  %}
+            <li style='color:{{ forloop.counter0|divisibleby:"2"|yesno:"red,blue"}}'>{{fooloop.counter0}} {{k}} {{v}}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
